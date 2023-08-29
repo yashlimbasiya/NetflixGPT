@@ -2,18 +2,21 @@
 
 - Create React Up 
 - Config Tailwind css
+- Header
+- Login Form
+- Sign Up Form
 
 # Features
-- login/Sign Up
+- Login/Sign Up
     - Sign In sign up form
-    - redirect to Browse Page
+    - Redirect to Browse Page
 - Browse (after authetication)
 - Header
-- main movie 
+- Main movie 
       - Trailer
       - Titles & Description
       - MovieSuggestions
-           - Movie List * N
+        - Movie List * N
 
 Netflix GPT
 - Search Bar
