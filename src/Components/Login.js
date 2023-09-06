@@ -11,6 +11,9 @@ import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { LOGO } from "../utils/constants";
+import { AVATARURl } from "../utils/constants";
+
 
 const Login = () => {
   const email = useRef(null);
@@ -42,7 +45,7 @@ const Login = () => {
           const user = userCredential.user;
           updateProfile(user, {
             displayName: name.current.value,
-            photoURL: "https://avatars.githubusercontent.com/u/82886165?v=4",
+            photoURL: AVATARURl
           })
             .then(() => {
               const { uid, displayName, email, photoURL } = auth.currentUser;
@@ -54,20 +57,14 @@ const Login = () => {
                   photoURL: photoURL,
                 })
               );
-              navigate("/browse");
               // Profile updated!
-              // ...
+              
             })
             .catch((error) => {
               setError(error.message);
               // An error occurred
-              // ...
             });
-          //   email.current.value = "";
-          //   password.current.value = "";
-          //   name.current.value = "";
-          //   navigate("/browse");
-          // ...
+         
           console.log(user);
         })
         .catch((error) => {
@@ -87,7 +84,7 @@ const Login = () => {
           // Signed in
           const user = userCredential.user;
           console.log(user);
-          navigate("/browse");
+          
           // ...
         })
         .catch((error) => {
@@ -103,8 +100,7 @@ const Login = () => {
       <Header />
       <img
         className="absolute "
-        src="https://assets.nflxext.com/ffe/siteui/vlv3/00103100-5b45-4d4f-af32-342649f1bda5/3bd48e1e-8f08-497c-b50b-44d0aebc2a65/US-en-20230821-popsignuptwoweeks-perspective_alpha_website_medium.jpg"
-        alt="imag"
+        src={LOGO}        alt="imag"
       ></img>
       <form
         onSubmit={(e) => {
