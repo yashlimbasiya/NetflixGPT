@@ -65,7 +65,7 @@ const Login = () => {
               // An error occurred
             });
          
-          console.log(user);
+         
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -83,7 +83,7 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log(user);
+          
           
           // ...
         })
@@ -106,7 +106,7 @@ const Login = () => {
         onSubmit={(e) => {
           e.preventDefault();
         }}
-        className="text-white absolute mx-auto my-36 right-0 left-0 w-3/12 p-10  bg-black bg-opacity-80"
+        className="text-white absolute mx-auto my-36 right-0 left-0 w-3/12 p-10 pb-10 bg-black bg-opacity-80"
       >
         <h1 className="font-bold text-3xl p-2 m-2">
           {isLoggedin ? "Sign In" : "Sign Up"}

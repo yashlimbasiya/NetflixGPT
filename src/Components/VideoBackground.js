@@ -17,6 +17,7 @@ const VideoBackground = ({ movie_id }) => {
         }
         title="YouTube video player"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        // height="750"
       ></iframe>
     </div>
   );

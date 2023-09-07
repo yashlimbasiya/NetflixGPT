@@ -28,6 +28,8 @@
 - Fetch Data for Trailer video and add it in store
 - embedded a youtube video in background and made it autoplay
 - Giving tailwind classes to make it look better
+- Build seconday component for movie list
+- Customhooks
 
 
 
