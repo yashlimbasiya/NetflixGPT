@@ -8,10 +8,14 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { onAuthStateChanged } from "@firebase/auth";
 import { addUser } from "../utils/userSlice";
-import { NETLOGO }  from "../utils/constants";
+import { NETLOGO, SUPPORTED_LANG }  from "../utils/constants";
+import { toggleGptSearchView } from "../utils/gptSlice";
+import { changeLanguage } from "../utils/configSlice";
+
 
 const Header = () => {
   const user = useSelector((store) => store.user);
+  const languageSupport = useSelector((store)=> store.gptSlice.showGptSearch)
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -39,8 +43,7 @@ const Header = () => {
             uid: uid,
             displayName: displayName,
             email: email,
-            photoURL: photoURL,
-          })
+            photoURL: photoURL,})
         );
         navigate("/browse");
         // ...
@@ -52,9 +55,18 @@ const Header = () => {
       }
     });
     return () => {
-      unsuscribe()
+      unsuscribe();
     }
   }, []);
+
+
+  const handleGptSearchClick = () => {
+    dispatch(toggleGptSearchView());
+  }
+
+  const handleLanguageChange = (e) => {
+    dispatch(changeLanguage(e.target.value));
+  }
 
   return (
     <div className="absolute px-8 py-2 bg-gradient-to-b from-black z-10 w-screen flex justify-between">
@@ -65,12 +77,20 @@ const Header = () => {
       ></img>
       {user && (
         <div className="flex p-2">
+          {languageSupport && <select className=" m-2 flex items-center rounded-lg h-9 bg-gray-700 p-2 text-white" onChange={handleLanguageChange}>
+            {SUPPORTED_LANG.map((lang) => { 
+              return <option key={lang.identifier} value={lang.name}>{lang.name}</option>
+            })}
+          </select>}
+          
+          <button className = "px-3 py-4  mx-4 my-2 h-2 flex items-center rounded-lg text-white bg-purple-800" onClick={handleGptSearchClick}> {languageSupport ? "Homepage": "GPT search"}</button>
           <img className="text-white w-12 h-12 p-2" src={user.photoURL} alt="Icon"></img>
+         
+           
           <button
-            className="text-white p-2 font-bold text-grey-700 "
+            className="text-white  font-bold text-grey-700 "
             onClick={handleSignout}
-          >
-            (Sign Out)
+          >(Sign Out)
           </button>
         </div>
       )}
