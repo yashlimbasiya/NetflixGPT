@@ -14,4 +14,4 @@ export const CDN_IMG_URL ="https://image.tmdb.org/t/p/w500"
 export const SUPPORTED_LANG = [{identifier :"en", name: "English"},{identifier :"hindi", name: "Hindi"},{identifier :"spanish", name: "Spanish"}]
 
 
-export const OPEN_AI_KEY = "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"
+export const OPEN_AI_KEY = process.env.REACT_APP_OPEN_AI_KEY
